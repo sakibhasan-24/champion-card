@@ -53,34 +53,65 @@ function App() {
 
 export default App;
 function Champions() {
+  const [show, setShow] = useState(null);
+  const handleToggle = (teamId) => {
+    setShow(teamId);
+  };
   return (
     <main>
       <div className="champions">
-        {championData.map((team) => (
-          <Champion team={team} key={team.id}></Champion>
-        ))}
+        {championData.map((team) => {
+          return (
+            <div
+              className={`champion ${team.id === show ? "newChamp" : ""}`}
+              key={team.id}
+              onClick={() => handleToggle(team.id)}
+            >
+              {/* <h1>{team.championteam}</h1> */}
+              {show === team.id ? (
+                <img src={team.imageurl} alt="" />
+              ) : (
+                <>
+                  <h1>
+                    {team.championteam} {team.year}
+                  </h1>
+                </>
+              )}
+            </div>
+          );
+        })}
       </div>
     </main>
   );
 }
 
-function Champion({ team }) {
-  const [show, setShow] = useState(null);
-  const handleToggle = (teamId) => {
-    if (teamId === show) {
-      return setShow(null);
-    } else {
-      setShow(teamId);
-    }
-  };
+// function Champion({ team }) {
+//   const [show, setShow] = useState(null);
+//   console.log(useState());
+//   const handleToggle = (teamId) => {
+//     if (teamId === show) {
+//       return setShow(null);
+//     } else {
+//       setShow(teamId);
+//     }
+//   };
 
-  return (
-    <div onClick={() => handleToggle(team.id)} className="champion">
-      {show === team.id ? (
-        <img src={team.imageurl} alt="image" />
-      ) : (
-        <h1>{team.year}</h1>
-      )}
-    </div>
-  );
-}
+//   return (
+//     <div onClick={() => handleToggle(team.id)} className="champion">
+//       {show === team.id ? (
+//         <img src={team.imageurl} alt="image" />
+//       ) : (
+//         <h1>{team.year}</h1>
+//       )}
+//     </div>
+//   );
+// }
+/* 
+state========
+1)state is internal data.used in components
+2)update through component
+
+props========
+1)external data,when talikg about props we need to think about parent component
+2)read only
+*/
