@@ -42,6 +42,7 @@
 } */
 html {
   font-size: 62.5%;
+  text-align: center;
 }
 main {
   width: 80rem;
@@ -59,4 +60,18 @@ main {
   padding: 4rem 4rem;
   text-align: center;
   cursor: pointer;
+  background-color: greenyellow;
+}
+.champion img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 3px 2px rgb(26, 7, 66);
+}
+@media screen and (max-width: 576px) {
+  main {
+    width: 30rem;
+  }
+  .champions {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

@@ -40,6 +40,7 @@ const championData = [
     year: 2002,
   },
 ];
+import { useState } from "react";
 import "./App.css";
 function App() {
   return (
@@ -64,9 +65,22 @@ function Champions() {
 }
 
 function Champion({ team }) {
+  const [show, setShow] = useState(null);
+  const handleToggle = (teamId) => {
+    if (teamId === show) {
+      return setShow(null);
+    } else {
+      setShow(teamId);
+    }
+  };
+
   return (
-    <div className="champion">
-      <h1>{team.year}</h1>
+    <div onClick={() => handleToggle(team.id)} className="champion">
+      {show === team.id ? (
+        <img src={team.imageurl} alt="image" />
+      ) : (
+        <h1>{team.year}</h1>
+      )}
     </div>
   );
 }
