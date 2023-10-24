@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +39,24 @@
 
 .read-the-docs {
   color: #888;
+} */
+html {
+  font-size: 62.5%;
+}
+main {
+  width: 80rem;
+  margin: 2rem auto;
+}
+.champions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+
+.champion {
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  padding: 4rem 4rem;
+  text-align: center;
+  cursor: pointer;
 }
